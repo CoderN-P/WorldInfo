@@ -1,0 +1,20 @@
+/node_modules
+/bower_components
+/dist
+/build
+/coverage
+/lib
+/test
+/tmp
+/vendor
+/yarn-error.log
+/yarn.lock
+/yarn-debug.log
+/yarn-error.log.1
+/yarn-debug.log.1
+/yarn-error.log.2
+/yarn-debug.log.2
+/yarn-error.log.3
+
+# Language: JSON
+# Path: .eslintrc.json
