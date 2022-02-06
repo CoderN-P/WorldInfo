@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, redirect, render_template, session, url_for
+from flask import Flask, jsonify, redirect, render_template, request, url_for
 from static.python.restcountries_info import country_filter
 from static.python.onthisday import get_fact
 from static.python.wbdata_info import *
@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 
 @app.route('/')
-def hello_world():
+def home():
     return render_template('index.html', fact=get_fact())
 
 @app.route('/getFact', methods=['GET'])
@@ -38,7 +38,13 @@ def get_country(country):
 
     return render_template('country.html', country = restcountries_data, page=f' - {restcountries_data["altSpellings"][-1]}')
 
-
-
+@app.route('/getEconomy', methods=['POST'])
+def getEconomy():
+    country = request.get_json()['country']
+    inflation = get_inflation_rate(country)
+    gdp = get_gdp_per_capita(country)
+    gni = get_gni_per_capita(country)
+    x_axis = list(set(list(gdp.keys())+list(gni.keys())+list(inflation.keys())))
+    return {'x_axis': x_axis, 'gdp': gdp, 'gni': gni, 'inflation': inflation}
 if __name__ == '__main__':
     app.run('0.0.0.0', port=8080, debug=True)
