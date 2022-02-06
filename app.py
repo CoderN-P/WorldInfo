@@ -3,11 +3,17 @@ from static.python.restcountries_info import country_filter
 from static.python.onthisday import get_fact
 from static.python.wbdata_info import *
 from static.python.get_news import get_news_articles
+
 app = Flask(__name__)
+
 
 @app.route('/')
 def hello_world():
     return render_template('index.html', fact=get_fact())
+
+@app.route('/getFact', methods=['GET'])
+def get_fact_GET():
+    return jsonify(get_fact())
 
 @app.route('/covid19')
 def covid19():
