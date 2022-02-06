@@ -11,5 +11,3 @@ def get_fact():
     data = response.json()
     return data
 
-print(get_fact())
-

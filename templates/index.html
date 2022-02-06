@@ -1,10 +1,28 @@
-<!DOCTYPE html>
+{% extends "layout.html" %}
+{% block main %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <script src="static/js/cycle_through_words.js"></script>
 </head>
-<body>
+<body class="antialiased text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900">
+
+    <div class="container mx-auto px-4 pb-4 float-left py-10 vertical-align-center">
+        <div class="flex flex-wrap">
+            <div class="w-full lg:w-1/2 p-4">
+                <h1 class="text-9xl font-bold text-white float-left">
+                    <span id="word">WorldInfo</span>
+                </h1>
+
+                <p class="text-center text-l text-white">
+                    <span id="word_definition">A place to learn about the world's countries and more</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+
 
 </body>
 </html>
+{% endblock %}

@@ -11,11 +11,11 @@ def hello_world():
 
 @app.route('/covid19')
 def covid19():
-    return render_template('covid19.html')
+    return render_template('covid19.html', page=' - COVID-19')
 
 @app.route('/404')
 def page_not_found(message = 'Page not found'):
-    return render_template('404.html', message = message), 404
+    return render_template('404.html', message = message, page=' - 404'), 404
 
 @app.route('/dashboard')
 def dashboard():
@@ -27,10 +27,10 @@ def get_country(country):
     if not restcountries_data:
         return redirect(url_for('page_not_found', message = 'Country not found'))
 
-    articles = get_news_articles(restcountries_data['altSpellings'][-1])
-    covid_info = get_country_covid_info(restcountries_data['altSpellings'][-1])
+    #articles = get_news_articles(restcountries_data['altSpellings'][-1])
+    #covid_info = get_country_covid_info(restcountries_data['altSpellings'][-1])
 
-    return render_template('country.html', country = restcountries_data)
+    return render_template('country.html', country = restcountries_data, page=f' - {restcountries_data["altSpellings"][-1]}')
 
 
 

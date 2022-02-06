@@ -24,4 +24,3 @@ def get_inflation_rate(country_code):
         country=country_code,
         indicator='FP.CPI.TOTL.ZG')
 
-print(get_inflation_rate('USA'))
