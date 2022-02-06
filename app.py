@@ -33,10 +33,11 @@ def get_country(country):
     if not restcountries_data:
         return redirect(url_for('page_not_found', message = 'Country not found'))
 
-    #articles = get_news_articles(restcountries_data['altSpellings'][-1])
+    articles = get_news_articles(restcountries_data['name'])
+    print(articles)
     #covid_info = get_country_covid_info(restcountries_data['altSpellings'][-1])
 
-    return render_template('country.html', country = restcountries_data, page=f' - {restcountries_data["altSpellings"][-1]}')
+    return render_template('country.html', country = restcountries_data, page=f' - {restcountries_data["name"]}', articles=articles)
 
 @app.route('/getEconomy', methods=['POST'])
 def getEconomy():

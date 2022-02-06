@@ -15,7 +15,7 @@ function createChart() {
     const myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: [data['x_axis']],
+            labels: [data.x_axis],
             datasets: [{
                 label: 'Annual Infation %',
                 data: data['inflation'],

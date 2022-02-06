@@ -218,7 +218,31 @@
                     </div>
                 </div>
             </div>
+        <div class="hover:bg-gray-700 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded shadow-lg p-5">
+                <div class="flex flex-col items-center">
+                    <h2 class="text-4xl font-bold">
+                        <span id="definition">Articles from or about {{ country.name }}</span>
+                    </h2>
+                <ul>
+                    <div class="mt-5 text-center text-lg leading-6 font-semibold text-gray-900 dark:text-gray-300">
+                            {% for article in articles[:5] %}
+                                <p>{{ article.url }} </p>
+                            {% endfor %}
+                    </ul>
 
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="align-middle justify-center h-full py-10" style="width:50%; margin: auto;">
+        <div class="text-center">
+            <h1 class="text-7xl font-bold text-white">
+                <span id="word">Economy Data</span>
+            </h1>
+            <br>
 
         </div>
     </div>
