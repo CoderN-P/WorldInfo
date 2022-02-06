@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, redirect, render_template, request, url_for
-from static.python.restcountries_info import country_filter
+from static.python.restcountries_info import *
 from static.python.onthisday import get_fact
 from static.python.wbdata_info import *
 from static.python.get_news import get_news_articles
@@ -25,7 +25,7 @@ def page_not_found(message = 'Page not found'):
 
 @app.route('/dashboard')
 def dashboard():
-    return render_template('dashboard.html')
+    return render_template('dashboard.html', countries=get_all(), page=' - Countries')
 
 @app.route('/<country>')
 def get_country(country):

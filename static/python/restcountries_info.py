@@ -38,5 +38,12 @@ def country_filter(country) -> bool | dict:
     else:
         if isinstance(data, list):
             data = data[0]
-        return data
+        return {i:a if a else None for i, a in data.items()}
 
+
+def get_all():
+    data = requests.get("https://restcountries.com/v2/all")
+    data = data.json()
+    return [(i["name"], i['flags']['svg']) for i in data]
+
+print(country_filter('Oman'))

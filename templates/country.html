@@ -1,10 +1,229 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "layout.html" %}
+{% block main %}
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <script src="/static/js/economy_chart.js"></script>
+    </head>
+    <body class="antialiased text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900 h-full">
+    <div class="align-middle justify-center h-full py-10" style="width:50%; margin: auto;">
+        <div class="text-center">
+            <h1 class="text-9xl font-bold text-white">
+                <span id="word">{{ country.name }}</span>
+            </h1>
+            <br>
+            <h2 class="text-2xl font-bold">
+                <span id="definition">Everything you need to know about {{ country.name }}</span>
+            </h2>
+            <br>
+        </div>
+    </div>
+    <div class="min-h-screen flex items-center justify-center">
+        <div class="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-4 p-5">
+            <div class="hover:bg-gray-700 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded shadow-lg p-5">
+                <div class="flex flex-col items-center">
+                    <h2 class="text-4xl font-bold">
+                        <span id="definition">Population</span>
+                    </h2>
+                    <div class="mt-5 text-center text-lg leading-6 font-semibold text-gray-900 dark:text-gray-300">
+                        <span id="population">{{ country.population }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hover:bg-gray-700 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded shadow-lg p-5">
+                <div class="flex flex-col items-center">
+                    <h2 class="text-4xl font-bold">
+                        <span id="definition">Area</span>
+                    </h2>
+                    <div class="mt-5 text-center text-lg leading-6 font-semibold text-gray-900 dark:text-gray-300">
+                        <span id="gdp">{{ country.area }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hover:bg-gray-700 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded shadow-lg p-5">
+                <div class="flex flex-col items-center">
+                    <h2 class="text-4xl font-bold">
+                        <span id="definition">Capital City</span>
+                    </h2>
+                    <div class="mt-5 text-center text-lg leading-6 font-semibold text-gray-900 dark:text-gray-300">
+                        <span id="gdp">{{ country.capital }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hover:bg-gray-700 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded shadow-lg p-5">
+                <div class="flex flex-col items-center">
+                    <h2 class="text-4xl font-bold">
+                        <span id="definition">Alpha2 Code</span>
+                    </h2>
+                    <div class="mt-5 text-center text-lg leading-6 font-semibold text-gray-900 dark:text-gray-300">
+                        <span id="gdp">{{ country.alpha2Code }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hover:bg-gray-700 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded shadow-lg p-5">
+                <div class="flex flex-col items-center">
+                    <h2 class="text-4xl font-bold">
+                        <span id="definition">Alpha3 Code</span>
+                    </h2>
+                    <div class="mt-5 text-center text-lg leading-6 font-semibold text-gray-900 dark:text-gray-300">
+                        <span id="gdp">{{ country.alpha3Code }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hover:bg-gray-700 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded shadow-lg p-5">
+                <div class="flex flex-col items-center">
+                    <h2 class="text-4xl font-bold">
+                        <span id="definition">Calling Code</span>
+                    </h2>
+                    <div class="mt-5 text-center text-lg leading-6 font-semibold text-gray-900 dark:text-gray-300">
+                        <ul>
+                            {% for calling_code in country.callingCodes %}
+                                <li>{{ calling_code }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        <div class="hover:bg-gray-700 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded shadow-lg p-5">
+                <div class="flex flex-col items-center">
+                    <h2 class="text-4xl font-bold">
+                        <span id="definition">Top Level Domain</span>
+                    </h2>
+                    <div class="mt-5 text-center text-lg leading-6 font-semibold text-gray-900 dark:text-gray-300">
+                        <ul>
+                            {% for tld in country.topLevelDomain %}
+                                <li>{{ tld }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="hover:bg-gray-700 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded shadow-lg p-5">
+                <div class="flex flex-col items-center">
+                    <h2 class="text-4xl font-bold">
+                        <span id="definition">Currencies</span>
+                    </h2>
+                    <div class="mt-5 text-center text-lg leading-6 font-semibold text-gray-900 dark:text-gray-300">
+                        <ul>
+                            {% for currency in country.currencies %}
+                                <li>{{ currency.symbol }} {{ currency.code }} | {{ currency.name }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="hover:bg-gray-700 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded shadow-lg p-5">
+                <div class="flex flex-col items-center">
+                    <h2 class="text-4xl font-bold">
+                        <span id="definition">Languages</span>
+                    </h2>
+                    <div class="mt-5 text-center text-lg leading-6 font-semibold text-gray-900 dark:text-gray-300">
+                        <ul>
+                            {% for language in country.languages %}
+                                <li>{{ language.name }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="hover:bg-gray-700 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded shadow-lg p-5">
+                <div class="flex flex-col items-center">
+                    <h2 class="text-4xl font-bold">
+                        <span id="definition">Regional Blocs</span>
+                    </h2>
+                    <div class="mt-5 text-center text-lg leading-6 font-semibold text-gray-900 dark:text-gray-300">
+                        <ul>
+                            {% for regional_bloc in country.regionalBlocs %}
+                                <li>{{ regional_bloc.name }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="hover:bg-gray-700 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded shadow-lg p-5">
+                <div class="flex flex-col items-center">
+                    <h2 class="text-4xl font-bold">
+                        <span id="definition">Borders</span>
+                    </h2>
+                    <div class="mt-5 text-center text-lg leading-6 font-semibold text-gray-900 dark:text-gray-300">
+                        <ul>
+                            {% for border in country.borders %}
+                                <li>{{ border }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="hover:bg-gray-700 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded shadow-lg p-5">
+                <div class="flex flex-col items-center">
+                    <h2 class="text-4xl font-bold">
+                        <span id="definition">Timezones</span>
+                    </h2>
+                    <div class="mt-5 text-center text-lg leading-6 font-semibold text-gray-900 dark:text-gray-300">
+                        <ul>
+                            {% for timezone in country.timezones %}
+                                <li>{{ timezone }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
 
-</body>
-</html>
+            </div>
+            <div class="hover:bg-gray-700 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded shadow-lg p-5">
+                <div class="flex flex-col items-center">
+                    <h2 class="text-4xl font-bold">
+                        <span id="definition">Alternate Spellings</span>
+                    </h2>
+                    <div class="mt-5 text-center text-lg leading-6 font-semibold text-gray-900 dark:text-gray-300">
+                        <ul>
+                            {% for spelling in country.altSpellings %}
+                                <li>{{ spelling }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="hover:bg-gray-700 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded shadow-lg p-5">
+                <div class="flex flex-col items-center">
+                    <h2 class="text-4xl font-bold">
+                        <span id="definition">Translations</span>
+                    </h2>
+                    <div class="mt-5 text-center text-lg leading-6 font-semibold text-gray-900 dark:text-gray-300">
+                        <ul>
+                            {% for c, a in country.translations.items() %}
+                                <li>{{ c }} - {{ a }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="hover:bg-gray-700 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded shadow-lg p-5">
+                <div class="flex flex-col items-center">
+                    <h2 class="text-4xl font-bold">
+                        <span id="definition">Region</span>
+                    </h2>
+                    <div class="mt-5 text-center text-lg leading-6 font-semibold text-gray-900 dark:text-gray-300">
+                        {{ country.region }}
+                    </div>
+                </div>
+            </div>
+            <div class="hover:bg-gray-700 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded shadow-lg p-5">
+                <div class="flex flex-col items-center">
+                    <h2 class="text-4xl font-bold">
+                        <span id="definition">Subregion</span>
+                    </h2>
+                    <div class="mt-5 text-center text-lg leading-6 font-semibold text-gray-900 dark:text-gray-300">
+                        {{ country.subregion }}
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    </body>
+    </html>
+{% endblock %}

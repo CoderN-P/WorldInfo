@@ -24,9 +24,4 @@ def get_inflation_rate(country_code):
         country=country_code,
         indicator='FP.CPI.TOTL.ZG')}
 
-inflation = get_inflation_rate('IND')
-gdp = get_gdp_per_capita('IND')
-gni = get_gni_per_capita('IND')
-x_axis = list(set(list(gdp.keys())+list(gni.keys())+list(inflation.keys())))
-print(x_axis)
 
