@@ -6,7 +6,7 @@ def get_gdp_per_capita(country_code):
     """
     return {int(i['date']): i['value'] for i in wbdata.get_data(
         country=country_code,
-        indicator='NY.GDP.PCAP.CD')}
+        indicator='NY.GDP.PCAP.CD') if i['value']}
 
 def get_gni_per_capita(country_code):
     """
@@ -14,7 +14,7 @@ def get_gni_per_capita(country_code):
     """
     return {int(i['date']): i['value'] for i in wbdata.get_data(
         country=country_code,
-        indicator='NY.GNP.PCAP.CD')}
+        indicator='NY.GNP.PCAP.CD') if i['value']}
 
 def get_inflation_rate(country_code):
     """
@@ -22,6 +22,6 @@ def get_inflation_rate(country_code):
     """
     return  {int(i['date']): i['value'] for i in wbdata.get_data(
         country=country_code,
-        indicator='FP.CPI.TOTL.ZG')}
+        indicator='FP.CPI.TOTL.ZG') if i['value']}
 
 

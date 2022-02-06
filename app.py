@@ -40,7 +40,10 @@ def get_country(country):
 
 @app.route('/getEconomy', methods=['POST'])
 def getEconomy():
-    country = request.get_json()['country']
+
+    country = request.get_json()
+    print(country)
+    country = country['country']
     inflation = get_inflation_rate(country)
     gdp = get_gdp_per_capita(country)
     gni = get_gni_per_capita(country)
