@@ -5,21 +5,65 @@
     <meta charset="UTF-8">
     <script src="static/js/cycle_through_words.js"></script>
 </head>
-<body class="antialiased text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900">
+<body class="antialiased text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900 h-full">
+    <div class="align-middle justify-center h-full py-10">
+        <div class="text-center">
+            <h1 class="text-9xl font-bold text-white">
+                <span id="word">WorldInfo</span>
+            </h1>
+            <br>
+            <h2 class="text-2xl font-bold">
+                <span id="definition">Learn all about the countries of the world and so much more!</span>
+            </h2>
+            <br>
+            <h3 class="text-xl font-bold">
+                <span id="definition">
+                    <a href="{{ url_for('dashboard') }}">
+                        <span class="text-white md:hover:text-blue-700">Try it out!</span>
+                    </a>
+                </span>
 
-    <div class="container mx-auto px-4 pb-4 float-left py-10 vertical-align-center">
-        <div class="flex flex-wrap">
-            <div class="w-full lg:w-1/2 p-4">
-                <h1 class="text-9xl font-bold text-white float-left">
-                    <span id="word">WorldInfo</span>
-                </h1>
-
-                <p class="text-center text-l text-white">
-                    <span id="word_definition">A place to learn about the world's countries and more</span>
-                </p>
             </div>
-        </div>
     </div>
+    <div class="align-left justify-center h-full py-10 pr-5 float-left" style="padding-left: 4vw">
+        <div class="text-center float-left pl-3">
+            <h1 class="text-7xl font-bold text-white">
+                <span id="word">COVID 19</span>
+            </h1>
+            <br>
+            <h2 class="text-2xl font-bold">
+                <span id="definition">Worldinfo provides up-to-date COVID information <br> about the world and individual countries. We use informative graphs<br> and important statistics to show accurate COVID-19 info</span>
+            </h2>
+            <br>
+            <h3 class="text-xl font-bold">
+                <span id="definition">
+                    <a href="{{ url_for('covid19') }}">
+                        <span class="text-white md:hover:text-blue-700">Try it out!</span>
+                    </a>
+                </span>
+
+            </div>
+    </div>
+    <div class="align-right justify-center h-full py-10 pr-5 float-right" style="padding-right: 4vw">
+        <div class="text-center float-right pr-3">
+            <h1 class="text-7xl font-bold text-white">
+                <span id="word">Country Data</span>
+            </h1>
+            <br>
+            <h2 class="text-2xl font-bold">
+                <span id="definition">Worldinfo provides up-to-date information (population, currency, borders, gdp, etc.) <br> about the all the countries in the world</span>
+            </h2>
+            <br>
+            <h3 class="text-xl font-bold">
+                <span id="definition">
+                    <a href="{{ url_for('dashboard') }}">
+                        <span class="text-white md:hover:text-blue-700">Try it out!</span>
+                    </a>
+                </span>
+
+            </div>
+</body>
+
 
 
 
